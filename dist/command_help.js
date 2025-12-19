@@ -1,7 +1,6 @@
-import { getCommands } from "./repl.js";
-export function commandHelp(_commands) {
+export function commandHelp(state) {
     let helpMessages = "";
-    const commands = getCommands();
+    const commands = state.commands;
     for (const command in commands) {
         helpMessages += `\n${commands[command].name}: ${commands[command].description}`;
     }
