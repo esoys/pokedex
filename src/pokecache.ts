@@ -17,15 +17,10 @@ export class Cache {
 
     #reap(): void {
         const now = Date.now();
-        console.log("REAP running at ", now, "interval", this.#interval);
 
         for (const [key, entry] of this.#cache.entries()) {
-            console.log(" checking key", key, "createdAt", entry.createdAt);
             if (entry.createdAt < ( now - this.#interval)) {
-                console.log("  DELETING", key);
                 this.#cache.delete(key); 
-            } else {
-                console.log("   KEEPING", key);
             };
         };
     };

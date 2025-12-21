@@ -15,12 +15,15 @@ export function startREPL(state: State) {
         if (inputArray.length === 0) {
             rl.prompt();
         } else {
+
             const commandName: string = inputArray[0];
+            const args: string[] = inputArray.slice(1);
+
             const command: CLICommand | undefined = commands[commandName];
             
             if (command) {
                 try {
-                    const response = await command.callback(state);
+                    await command.callback(state, ...args);
                 } catch (err) {
                     console.error((err as Error).message);
                 };

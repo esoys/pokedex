@@ -1,28 +1,10 @@
-import { createInterface, type Interface } from "node:readline";
+import { createInterface } from "node:readline";
 import { Pokeapi } from "./pokeapi.js";
 import { commandExit } from "./command_exit.js";
 import { commandHelp } from "./command_help.js";
 import { commandMapForward, commandMapBackwards } from "./command_map.js";
 import { commandExplore } from "./command_explore.js";
-
-
-export type CLICommand = {
-    name: string;
-    description: string;
-    callback: (state: State, ...args: string[]) => Promise<void>;
-};
-
-
-export type State = {
-    readline: Interface;
-    commands: Record<string, CLICommand>;
-    pokeapi: Pokeapi;
-    nextLocationsURL: string | null;
-    prevLocationsURL: string | null;
-};
-
-
-export function initState(): State {
+export function initState() {
     return {
         readline: createInterface({
             input: process.stdin,
@@ -60,4 +42,5 @@ export function initState(): State {
         nextLocationsURL: null,
         prevLocationsURL: null,
     };
-};
+}
+;
