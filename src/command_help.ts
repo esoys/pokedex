@@ -1,6 +1,6 @@
 import { type State, type CLICommand } from "./state.js";
 
-export function commandHelp(state: State) {
+export async function commandHelp(state: State) {
     let helpMessages: string = "";
     const commands = state.commands;
 

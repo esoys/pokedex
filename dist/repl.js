@@ -2,7 +2,7 @@ export function startREPL(state) {
     const rl = state.readline;
     const commands = state.commands;
     rl.prompt();
-    rl.on("line", (line) => {
+    rl.on("line", async (line) => {
         const inputArray = cleanInput(line);
         if (inputArray.length === 0) {
             rl.prompt();
@@ -11,7 +11,13 @@ export function startREPL(state) {
             const commandName = inputArray[0];
             const command = commands[commandName];
             if (command) {
-                command.callback(state);
+                try {
+                    const response = await command.callback(state);
+                }
+                catch (err) {
+                    console.error(err.message);
+                }
+                ;
             }
             else {
                 console.log("Unknown command");

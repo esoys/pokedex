@@ -1,4 +1,4 @@
-export function commandHelp(state) {
+export async function commandHelp(state) {
     let helpMessages = "";
     const commands = state.commands;
     for (const command in commands) {

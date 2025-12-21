@@ -10,7 +10,7 @@ export function startREPL(state: State) {
 
     rl.prompt();
 
-    rl.on("line", (line: string) => {
+    rl.on("line", async (line: string) => {
         const inputArray = cleanInput(line);
         if (inputArray.length === 0) {
             rl.prompt();
@@ -19,7 +19,12 @@ export function startREPL(state: State) {
             const command: CLICommand | undefined = commands[commandName];
             
             if (command) {
-                command.callback(state);
+                try {
+                    const response = await command.callback(state);
+                } catch (err) {
+                    console.error((err as Error).message);
+                };
+
             } else {
                 console.log("Unknown command");
             }
