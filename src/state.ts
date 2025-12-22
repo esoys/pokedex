@@ -6,6 +6,7 @@ import { commandMapForward, commandMapBackwards } from "./command_map.js";
 import { commandExplore } from "./command_explore.js";
 import { commandCatch } from "./command_catch.js";
 import { commandInspect } from "./command_inspect.js";
+import { commandPokedex } from "./command_pokedex.js";
 
 
 export type CLICommand = {
@@ -67,6 +68,11 @@ export function initState(): State {
                 name: "inspect",
                 description: "Display stats of caugth pokemon",
                 callback: commandInspect,
+            },
+            pokedex: {
+                name: "pokedex",
+                description: "Display all caught pokemon",
+                callback: commandPokedex,
             },
         },
         pokedex: {},
