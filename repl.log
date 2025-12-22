@@ -2,16 +2,6 @@
 > pokedex@1.0.0 dev
 > npx tsc && node dist/main.js
 
-Pokedex > Exploring pastoria-city-area
-Pokemon found:
- - tentacool
- - tentacruel
- - magikarp
- - gyarados
- - remoraid
- - octillery
- - wingull
- - pelipper
- - shellos
- - gastrodon
-Pokedex > Closing the Pokedex... Goodbye!
+src/command_inspect.ts(1,23): error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.
+src/command_inspect.ts(22,37): error TS2339: Property 'type' does not exist on type 'string'.
+src/pokeapi.ts(185,13): error TS2552: Cannot find name 'numer'. Did you mean 'number'?
